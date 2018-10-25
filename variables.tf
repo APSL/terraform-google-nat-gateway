@@ -74,6 +74,16 @@ variable machine_type {
   default     = "n1-standard-1"
 }
 
+variable "preemptible" {
+  description = "Use preemptible instances - lower price but short-lived instances. See https://cloud.google.com/compute/docs/instances/preemptible for more details"
+  default     = "false"
+}
+
+variable "automatic_restart" {
+  description = "Automatically restart the instance if terminated by GCP - Set to false if using preemptible instances"
+  default     = "true"
+}
+
 variable compute_image {
   description = "Image used for NAT compute VMs."
   default     = "projects/debian-cloud/global/images/family/debian-9"
@@ -109,6 +119,11 @@ variable ssh_source_ranges {
   description = "Network ranges to allow SSH from"
   type        = "list"
   default     = ["0.0.0.0/0"]
+}
+
+variable disk_type {
+  description = "The GCE disk type. Can be either pd-ssd, local-ssd, or pd-standard."
+  default     = "pd-ssd"
 }
 
 variable instance_labels {

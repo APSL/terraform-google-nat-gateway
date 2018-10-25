@@ -57,6 +57,8 @@ module "nat-gateway" {
   instance_labels       = "${var.instance_labels}"
   service_account_email = "${var.service_account_email}"
   machine_type          = "${var.machine_type}"
+  preemptible           = "${var.preemptible}"
+  automatic_restart     = "${var.automatic_restart}"
   name                  = "${local.name}"
   compute_image         = "${var.compute_image}"
   size                  = 1
@@ -69,6 +71,7 @@ module "nat-gateway" {
   metadata              = "${var.metadata}"
   ssh_fw_rule           = "${var.ssh_fw_rule}"
   ssh_source_ranges     = "${var.ssh_source_ranges}"
+  disk_type             = "${var.disk_type}"
   http_health_check     = "${var.autohealing_enabled}"
 
   update_strategy = "ROLLING_UPDATE"
